@@ -6,6 +6,7 @@ import About from './components/About'
 import Download from './components/Download'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
+import Stats from './components/Stats'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)
@@ -19,10 +20,11 @@ function App() {
   }, [darkMode])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-amber-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <Hero />
       <Features />
+      <Stats />
       <About />
       <Contact />
       <Download />

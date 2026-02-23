@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X, Sun, Moon, Github } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '#home' },
+  { name: 'Architecture', href: '#opensource' },
   { name: 'Features', href: '#features' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
-  { name: 'Download', href: '#download' },
+  { name: 'Tech Stack', href: '#about' },
+  { name: 'Docs', href: '#download' },
 ]
 
 interface NavbarProps {
@@ -41,7 +41,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-lg shadow-green-100 dark:shadow-green-900/20' 
+          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-lg shadow-emerald-100 dark:shadow-emerald-900/20' 
           : 'bg-transparent'
       }`}
     >
@@ -58,7 +58,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               className="h-10 w-auto object-contain"
             />
             <span className="text-2xl font-bold font-['Outfit']">
-              <span className={darkMode ? 'text-green-400' : 'text-green-600'}>Jal</span>
+              <span className={darkMode ? 'text-emerald-400' : 'text-emerald-600'}>Jal</span>
               <span className={darkMode ? 'text-white' : 'text-slate-800'}>Sakhi</span>
             </span>
           </motion.div>
@@ -71,11 +71,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(item.href)}
                 className={`font-medium transition-colors relative group ${
-                  darkMode ? 'text-slate-300 hover:text-green-400' : 'text-slate-600 hover:text-green-600'
+                  darkMode ? 'text-slate-300 hover:text-emerald-400' : 'text-slate-600 hover:text-emerald-600'
                 }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full" />
               </motion.button>
             ))}
           </div>
@@ -89,20 +89,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               className={`p-2 rounded-full transition-colors ${
                 darkMode 
                   ? 'bg-slate-800 text-yellow-400 hover:bg-slate-700' 
-                  : 'bg-green-100 text-green-600 hover:bg-green-200'
+                  : 'bg-emerald-100 text-emerald-600 hover:bg-emerald-200'
               }`}
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
             
-            <motion.button
+            <motion.a
+              href="https://github.com/Sameer-Bagul/jalsakhi-ai-powered-precision-agriculture-platform"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection('#download')}
-              className="btn-primary"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition-all"
             >
-              Get App
-            </motion.button>
+              <Github className="w-4 h-4" />
+              GitHub
+            </motion.a>
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -113,7 +116,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               className={`p-2 rounded-full transition-colors ${
                 darkMode 
                   ? 'bg-slate-800 text-yellow-400' 
-                  : 'bg-green-100 text-green-600'
+                  : 'bg-emerald-100 text-emerald-600'
               }`}
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -136,7 +139,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-green-100 dark:border-slate-800"
+            className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-emerald-100 dark:border-slate-800"
           >
             <div className="container-custom mx-auto px-4 py-4 flex flex-col gap-4">
               {navItems.map((item, index) => (
@@ -147,21 +150,24 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                   transition={{ delay: index * 0.1 }}
                   onClick={() => scrollToSection(item.href)}
                   className={`font-medium py-2 text-left transition-colors ${
-                    darkMode ? 'text-slate-300 hover:text-green-400' : 'text-slate-600 hover:text-green-600'
+                    darkMode ? 'text-slate-300 hover:text-emerald-400' : 'text-slate-600 hover:text-emerald-600'
                   }`}
                 >
                   {item.name}
                 </motion.button>
               ))}
-              <motion.button
+              <motion.a
+                href="https://github.com/Sameer-Bagul/jalsakhi-ai-powered-precision-agriculture-platform"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navItems.length * 0.1 }}
-                onClick={() => scrollToSection('#download')}
-                className="btn-primary mt-2"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold mt-2"
               >
-                Get App
-              </motion.button>
+                <Github className="w-4 h-4" />
+                GitHub
+              </motion.a>
             </div>
           </motion.div>
         )}
